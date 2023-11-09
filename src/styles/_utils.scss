@@ -1,0 +1,270 @@
+.glass-effect {
+    border: 1px solid getColor(base2);
+    box-shadow: getColor(boxShadow);
+}
+
+.blur-glass-effect {
+    background-color: getColor(backgroundDim);
+    border-radius: 15px;
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.d-btn {
+    font-family: inherit;
+    font-size: $p-size;
+    font-weight: 600;
+    color: getColor(text);
+    text-decoration: none;
+    text-align: center;
+    line-height: 1;
+
+    user-select: none;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+    border-radius: 4rem;
+    transition: 0.25s;
+}
+
+.d-btn-primary {
+    background-color: $clr-primary;
+    color: $clr-white !important;
+
+    svg {
+        fill: $clr-white !important;
+    }
+}
+
+.d-btn-outline {
+    color: getColor(text);
+    border: 2px solid getColor(border);
+
+    &:hover {
+        background-color: getColor(base);
+        color: getColor(text);
+    }
+}
+
+.d-btn-block {
+    color: getColor(text);
+    border: 1px solid getColor(border);
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 70px;
+
+    &:hover {
+        // background-color: getColor(base);
+        color: getColor(text);
+    }
+}
+
+.d-btn-primary:disabled,
+.d-btn-primary.active:disabled,
+.d-btn:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    border: 1px solid getColor(base2);
+    color: #d2d2d2 !important;
+    background-color: #eee !important;
+}
+
+.input {
+    background-color: transparent;
+    width: 100%;
+    font-size: $p-size;
+    padding: 2rem 3rem;
+    border-radius: 10rem;
+    border: 1px solid getColor(border);
+    outline: none;
+
+    &::placeholder {
+        color: #777;
+    }
+}
+
+.btn-actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    .d-btn {
+        border: 2px solid getColor(text);
+        text-align: center;
+    }
+
+    .d-btn.active {
+        border: none;
+    }
+}
+
+.icon-xl {
+    width: 5rem;
+    height: auto;
+}
+
+.icon-l {
+    width: 4rem;
+    height: auto;
+}
+
+.icon {
+    width: 3rem;
+    height: auto;
+}
+
+.icon-s {
+    width: 2.5rem;
+    height: auto;
+}
+
+.icon-xs {
+    width: 2rem;
+    height: auto;
+}
+
+.center-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header.dark-theme {
+    background-color: #121212;
+}
+
+.backdrop__container {
+    position: fixed;
+    inset: 0;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    color: getColor(text);
+    display: flex;
+    justify-content: center;
+    padding-top: 15rem;
+}
+
+.simple-backdrop {
+    padding: 0;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+
+    .backdrop__content {
+        position: relative;
+        background-color: getColor(base1);
+        border-radius: $border-radius;
+        border: 1px solid getColor(border);
+        max-width: 100rem;
+    }
+}
+
+// FOR HIDE ELEMENT ON DESKTOPS
+@media only screen and (min-width: 800px) {
+    .hide-desktop {
+        display: none;
+    }
+}
+
+// FOR HIDE ELEMENT ON MOBILES
+@media only screen and (max-width: 800px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .backdrop__container {
+        padding-top: 15rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .hide-mobile-s {
+        display: none;
+    }
+
+    .glass-effect {
+        border: 1px solid getColor(border);
+        box-shadow: none;
+        background-color: rgba(255, 255, 255, 0.025);
+    }
+
+    .backdrop__container {
+        padding-top: 10rem;
+        padding-inline: 4rem;
+    }
+
+    .loader-animation {
+        left: -30px;
+    }
+}
+
+.loader-animation {
+    --size: 0.5rem;
+    color: getColor(base1);
+    font-size: 5px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    position: relative;
+    left: -40px;
+    text-indent: -9999em;
+    animation: mulShdSpin 1.3s infinite linear;
+    transform: translateZ(0);
+}
+
+@keyframes mulShdSpin {
+
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+            -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
+            -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em,
+            -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
+            -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
+            -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
+            -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+            -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+            -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+
+.hint {
+    font-size: 2.5rem;
+}
+
+.primary-color{
+    color: #6900ff;
+}

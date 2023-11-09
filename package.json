@@ -1,0 +1,38 @@
+{
+  "name": "vite-react-starter",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host --port 3003",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "dependencies": {
+    "@stacks/connect": "^7.3.1",
+    "axios": "^1.4.0",
+    "bitcoin-address-validation": "^2.2.1",
+    "micro-btc-signer": "^0.4.2",
+    "moment": "^2.29.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.4.5",
+    "react-toastify": "^9.1.3",
+    "react-tooltip": "^5.13.1",
+    "sats-connect": "^0.2.0",
+    "stackjs": "^1.0.0",
+    "@xverse/core": "^2.2.26-alpha.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.2",
+    "daisyui": "^2.6.0",
+    "eslint": "^8.42.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "postcss": "^8.4.7",
+    "sass": "^1.62.1",
+    "tailwindcss": "^3.0.23",
+    "vite": "^2.8.0"
+  }
+}

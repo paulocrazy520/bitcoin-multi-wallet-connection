@@ -1,0 +1,26 @@
+.simple-footer {
+    align-items: center;
+    div,
+    p {
+        background-color: getColor(base1);
+        padding: 0.5rem 1.5rem;
+        border-radius: 10rem;
+    }
+    div {
+        border-top-left-radius: 0;
+        ul {
+            padding: 0.8rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .simple-footer {
+        flex-direction: column;
+        gap: 3rem;
+        div {
+            border-top-right-radius: 0;
+            padding: 0.5rem 3.5rem;
+        }
+    }
+}

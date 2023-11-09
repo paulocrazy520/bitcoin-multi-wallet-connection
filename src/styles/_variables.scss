@@ -1,0 +1,80 @@
+$clr-pink: #ff40bd;
+$clr-orange: #ffaa1b;
+$clr-purple: #6900ff;
+$clr-darkblue: #2a2d53;
+$clr-yellow: #fff42c;
+$clr-brown: #261d14;
+$clr-black: #000000;
+$clr-white: #ffffff;
+$clr-black-light: #373737;
+
+$clr-text: $clr-black;
+$clr-background: $clr-white;
+$clr-primary: $clr-purple;
+
+$clr-light-light: rgba(255, 255, 255, 0.5);
+$clr-dark-light: rgba(0, 0, 0, 0.5);
+
+$clr-box-shadow: rgba(0, 0, 0, 0.11);
+
+$box-shadow: 0px 4px 20px $clr-box-shadow;
+
+$font-family: "League Spartan", sans-serif;
+
+$h1-size: 4.5rem;
+$h2-size: 3.5rem;
+$h3-size: 2.8rem;
+$p-size: 2rem;
+/* LINE HEIGHT IN PARA 3rem */
+
+$border-radius: 15px;
+$border-color: #f0f0f0;
+
+$header-size: 11rem;
+
+$colors: (
+    base: #ffffff,
+    base1: #ffffff,
+    base2: #ffffff,
+    text: #000,
+    border: #f0f0f0,
+    backgroundDim: rgba(255, 255, 255, 0.5),
+    boxShadow: 0px 4px 20px rgba(0, 0, 0, 0.11),
+);
+//dark theme
+$colors-dark: (
+    base: #000000,
+    base1: #1f1e1e,
+    base2: #373737,
+    text: #ffffff,
+    border: #373737,
+    backgroundDim: rgba(0, 0, 0, 0.5),
+    boxShadow: 0px 4px 20px gba(0, 0, 0, 0.11),
+);
+
+@function getColor($color-name) {
+    @return var(--color-#{$color-name});
+}
+
+//converting scss variable into css variable
+:root {
+
+    @each $name,
+    $color in $colors {
+        --color-#{$name}: #{$color};
+    }
+
+    --theme: "light";
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+
+        @each $name,
+        $color in $colors-dark {
+            --color-#{$name}: #{$color};
+        }
+
+        --theme: "dark";
+    }
+}

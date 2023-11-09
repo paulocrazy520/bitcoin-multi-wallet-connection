@@ -1,0 +1,21 @@
+.header {
+    padding: 1.5rem 10rem;
+    margin-bottom: 3rem;
+    @media only screen and (max-width: 1440px) {
+        .logo__container {
+            max-width: 15rem;
+        }
+    }
+
+    @media only screen and (max-width: 1030px) {
+        padding: 1.5rem 6rem;
+
+        .logo__container {
+            max-width: 10rem;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        padding: 1.5rem 4rem;
+    }
+}

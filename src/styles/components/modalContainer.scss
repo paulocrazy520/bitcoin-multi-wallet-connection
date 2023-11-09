@@ -1,0 +1,45 @@
+.modal__container {
+    position: fixed;
+
+    .modal__content {
+        max-width: 80rem;
+        height: max-content;
+        text-align: center;
+        border: 2px solid $clr-primary;
+        border-radius: $border-radius;
+        padding: 8rem 4rem;
+        background-color: getColor(base1);
+        color: getColor(text);
+
+        .btn-group {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(20rem, 25rem));
+            justify-items: center;
+            justify-content: center;
+            grid-gap: 2rem;
+
+            .d-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .modal__content {
+            max-width: 90%;
+            padding: 3rem;
+
+            .btn-group {
+                grid-template-columns: repeat(2, minmax(max-content, 1fr));
+                width: 100%;
+
+                .d-btn {
+                    flex: 1;
+                    min-width: 100%;
+                }
+            }
+        }
+    }
+}

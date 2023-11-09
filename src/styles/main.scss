@@ -1,0 +1,18 @@
+@import "variables";
+@import "base";
+@import "utils";
+
+// COMPONENTS
+@import "./components/dataList";
+@import "./components/notification";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/modalContainer";
+
+@import "./pages/home";
+
+// LAYOUT
+@import "layout";
+
+// DARK VERSION
+@import "dark";

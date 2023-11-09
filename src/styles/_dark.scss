@@ -1,0 +1,15 @@
+// DARK THEME
+.dark-theme {
+    .d-btn-primary:disabled,
+    .d-btn-primary.active:disabled,
+    .d-btn:disabled {
+        background-color: transparent !important;
+    }
+
+    .text-grey-d {
+        color: #9c9c9c !important;
+    }
+    .text-grey-d1 {
+        color: #797979 !important;
+    }
+}

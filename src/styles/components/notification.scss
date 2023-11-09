@@ -1,0 +1,133 @@
+.Toastify__toast-container,
+.Toastify__toast-body,
+.Toastify__toast {
+    padding: 0 !important;
+}
+
+.Toastify__toast-container {
+    width: max-content !important;
+    top: 14rem !important;
+    right: 10rem !important;
+}
+
+.Toastify__toast,
+.Toastify__toast-body {
+    border-radius: 1rem !important;
+    overflow: hidden;
+    height: max-content !important;
+    min-height: max-content !important;
+}
+
+.Toastify__close-button {
+    display: none;
+}
+
+.msg__container {
+    &.success {
+        --main-clr: #4cbd7a;
+    }
+
+    &.warning {
+        --main-clr: #ffba0a;
+    }
+
+    &.failed {
+        --main-clr: #ff783f;
+    }
+
+    width: 100%;
+    display: flex;
+    font-family: $font-family;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--main-clr);
+    color: var(--main-clr);
+    position: relative;
+
+    .msg__icon {
+        background-color: var(--main-clr);
+        padding: 1rem 3rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            fill: $clr-white !important;
+        }
+    }
+
+    .msg__text {
+        padding: 2rem 3rem;
+        padding-right: 10rem;
+        font-size: 3rem;
+        background-color: getColor(base1);
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .msg__icon-close {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2rem;
+    }
+
+    svg {
+        fill: var(--main-clr);
+        stroke: var(--main-clr);
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .Toastify__toast-container {
+        top: 15rem !important;
+        right: 6rem !important;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .Toastify__toast-container {
+        top: 15rem !important;
+        right: 3rem !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .Toastify__toast-container {
+        top: 13rem !important;
+        right: 4rem !important;
+    }
+
+    .msg__container {
+        .msg__icon {
+            padding: 1rem 1.5rem;
+        }
+
+        .msg__text {
+            padding: 1rem 2rem;
+            padding-right: 7rem;
+            font-size: 2.5rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Toastify__toast-container {
+        top: 13rem !important;
+        right: 1rem !important;
+        left: initial !important;
+        margin: 20px !important;
+        max-width: 350px;
+    }
+
+    .Toastify__toast-container,
+    .Toastify__toast-body,
+    .Toastify__toast {
+        padding: 0 !important;
+        margin: 10px;
+    }
+}

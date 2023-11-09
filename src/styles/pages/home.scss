@@ -1,0 +1,195 @@
+.home__container {
+    padding: 0 4rem 4rem;
+
+    .home__content {
+        .home__details {
+            max-width: 110rem;
+            margin: 0 auto;
+
+            .info {
+                h3 {
+                    color: $clr-primary;
+                }
+
+                &>div {
+                    border-radius: 10rem;
+                    border: 1px solid getColor(border);
+                    padding: 1rem 3rem;
+                }
+
+                .how {
+                    cursor: pointer;
+                    user-select: none;
+                }
+            }
+
+            .timer__container {
+                padding: 4rem 6rem;
+                border: 1px solid getColor(border);
+                border-radius: $border-radius;
+
+                p {
+                    font-size: 2.6rem !important;
+                }
+
+                .box {
+                    .box-no {
+                        background-color: $clr-primary;
+                        padding: 2rem;
+                        color: #fff;
+                        font-size: 5rem;
+                        font-weight: 700;
+                        border-radius: $border-radius;
+                        width: 9rem;
+                        height: 8rem;
+                        line-height: 1;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    span {
+                        font-size: 2rem;
+                    }
+                }
+            }
+
+            .purchase__container {
+                padding: 4rem 5rem;
+                border: 1px solid getColor(border);
+                border-radius: $border-radius;
+
+                .trade__container {
+                    &>div {
+                        flex: 1;
+
+                        .top {
+                            margin-bottom: 1rem;
+                            padding: 0 1rem;
+                            font-size: 1.8rem;
+                        }
+
+                        .bottom {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 1rem;
+
+                            padding: 0.8rem 2rem;
+                            border-radius: 10rem;
+                            border: 1px solid getColor(border);
+
+                            &>input {
+                                background-color: transparent;
+                                width: 100%;
+                                font-size: $p-size;
+                            }
+
+                            .coin__list {
+                                position: relative;
+
+                                svg {
+                                    width: 1rem;
+                                }
+
+                                .datalist__container {
+                                    min-width: 15rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .backdrop__content {
+        padding: 4rem;
+
+        .close-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+
+            svg {
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-weight: 300 !important;
+
+            span {
+                font-weight: 700 !important;
+                margin-right: 2rem;
+            }
+        }
+
+        &>h3 {
+            margin-top: 4rem;
+        }
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 650px) {
+        .home__content {
+            .home__details {
+                .info {
+                    .token {
+                        h3 {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            max-width: 30rem;
+                            /* or any desired width */
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .timer__container {
+                    flex-direction: column;
+
+                    .left {
+                        flex-direction: column-reverse;
+                    }
+
+                    .box {
+                        .box-no {}
+                    }
+                }
+
+                .purchase__container {
+                    .input {
+                        margin-bottom: 4rem;
+                    }
+
+                    .trade__container {
+                        flex-direction: column;
+                        gap: 3rem;
+
+                        &>p {
+                            justify-self: center;
+                            align-self: center;
+                            transform: rotate(90deg);
+                            margin: 0;
+                        }
+
+                        .left,
+                        .right {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
