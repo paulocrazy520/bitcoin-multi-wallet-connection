@@ -31,7 +31,7 @@ export default function useHiro() {
   const connectWallet = async () => {
     return new Promise((res, rej) => {
       let ret = false;
-      messageApi.notifyWarning('Connectting Hiro wallet!', 3)
+      messageApi.notifyWarning('Connecting Hiro wallet!', 3)
       // if (!userSession.isUserSignedIn()) {
       showConnect({
         userSession,
