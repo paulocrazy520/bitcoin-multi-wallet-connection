@@ -37,7 +37,8 @@ export default function useHiro() {
         userSession,
         network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
         appDetails: {
-          name: 'Wallet Connection Test'
+          name: 'Wallet Connection Test',
+          icon: window.location.origin + '/src/assets/icons/ada.png'
         },
         onFinish: () => {
           messageApi.notifySuccess('Hiro wallet connect success.')
