@@ -27,7 +27,7 @@ const walletOptions = [
   {
     icon: metamaskWalletIcon,
     value: 2,
-    label: 'Hiro Wallet'
+    label: 'Leather Wallet'
   },
   {
     icon: okxWalletIcon,
