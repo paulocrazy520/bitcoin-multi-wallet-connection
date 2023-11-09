@@ -37,8 +37,7 @@ export default function useHiro() {
         userSession,
         network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
         appDetails: {
-          name: 'DexOrdi Presale',
-          icon: window.location.origin + '/src/assets/logo/dexordi-dark.png',
+          name: 'Wallet Connection Test'
         },
         onFinish: () => {
           messageApi.notifySuccess('Hiro wallet connect success.')

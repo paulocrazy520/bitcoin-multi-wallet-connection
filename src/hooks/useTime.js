@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import {
-  getCurrentTimeApi,
-  getEndtimeApi,
-  getStarttimeApi,
-  worldTimeApi,
-} from '../utils/apiRoutes'
+
 import moment, { duration } from 'moment/moment'
 
 const formatNumber = number => {

@@ -1,9 +1,6 @@
 export const APP_MODE = true //false- test mode
 export const BTCNETWORK = 1 //0- testnet 1-mainnet
 
-export const orderStatusArray = ['Listed', 'Processing', 'Finalizing', 'Failed', 'Confirmed']
-
-export const factoryWalletAddress = 'tb1p4qhrayfl8u3encg86mhek3j2n3wuemms3duwpjspgq6ld44neclqmzfn9s'
 
 export const ORDER_TYPE_CREATE_POOL = 1
 export const ORDER_TYPE_ADD_LIQUIDITY = 2
@@ -45,21 +42,6 @@ export const formatTime = timestamp => {
 export const isStringEqual = (string1, string2) => {
   if (!string1 || !string2) return false
   return string1.tick.toUpperCase() === string2.tick.toUpperCase()
-}
-
-export const defaultToken = {
-  _id: '64671b984ae76e5e942a07d4',
-  p: 'brc-20',
-  op: 'deploy',
-  tick: '.....',
-  max: '210000000',
-  lim: '100',
-  deploy_address: 'tb1p5z9j8xtxsy2k2umvl5frc2x4dgclhrfryexmw39wft3ezqr006lsa5h2xa',
-  txid: 'dfebfc3fb8ff280321a88470ebefa50aed5c17a20a783e2f5734b9df4b3251d1',
-  inscription_number: 1946,
-  valid: true,
-  description: 'success',
-  error: 0,
 }
 
 export const sleep = timeout => {

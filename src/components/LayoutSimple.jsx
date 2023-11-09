@@ -5,8 +5,6 @@ import { toast } from 'react-toastify'
 import { setDarkModeVariables, setLightModeVariables } from '../utils/utils'
 import { useAuthState } from '../context/AuthContext'
 
-import logoLight from '../assets/logo/dexordi-light.png'
-import logoDark from '../assets/logo/dexordi-dark.png'
 import lightIcon from '../assets/icons/light-icon.png'
 import darkIcon from '../assets/icons/dark-icon.png'
 import CancelIcon from '../assets/icons/CancelIcon'
