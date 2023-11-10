@@ -4,7 +4,7 @@ import useXverse from './useXverse'
 import useHiro from './useHiro'
 
 import { signMessage as satSignMessage } from "sats-connect";
-import { AppConfig, UserSession, signMessage, showConnect } from '@stacks/connect';
+import { AppConfig, UserSession, signMessage, showConnect, openSignatureRequestPopup } from '@stacks/connect';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
 import { BTCNETWORK } from "../utils/constants";
 
@@ -32,23 +32,24 @@ export default function useMultiWallet() {
         }
         break;
       case 1:
-        const signatrue = await signMessage({
-          network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
-          appDetails: {
-            name: 'Wallet Connection Sign',
-            icon: window.location.origin + '/src/assets/icons/ada.png'
-          },
-          stxAddress: auth.profile.stxAddress,
-          message: message,
-          onFinish: (response) => {
-              console.log("********onFinish", response);
-          },
-          onCancel: () => console.log("Canceled!"),
+        const strHiroSignatrue = await new Promise((res, rej) => {
+          openSignatureRequestPopup({
+            network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
+            appDetails: {
+              name: 'Hiro Wallet Sign',
+              icon: window.location.origin + '/src/assets/icons/ada.png'
+            },
+            message: message,
+            onFinish: (response) => {
+              res(response.signature);
+            },
+            onCancel: () => console.log("Hiro Sign Canceled!"),
+          });
         });
 
-        return signatrue;
+        return strHiroSignatrue
       case 2:
-        const strSignatrue = await new Promise((res, rej) => {
+        const strXverseSignature = await new Promise((res, rej) => {
           satSignMessage({
             payload: {
               network: {
@@ -60,11 +61,11 @@ export default function useMultiWallet() {
             onFinish: (response) => {
               res(response);
             },
-            onCancel: () => console.log("Canceled!"),
+            onCancel: () => console.log("Xverse Sign Canceled!"),
           });
         });
 
-        return strSignatrue;
+        return strXverseSignature;
     }
   }
 
