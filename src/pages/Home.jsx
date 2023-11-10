@@ -151,7 +151,7 @@ function Home() {
                   </div>
                   <div className='flex flex-row items-start w-full max-w-lg gap-8 break-words'>
                     <h3>Signature:</h3>
-                    <h3 className={ !authState.preferDark && '!text-black'}>{strSignature}</h3>
+                    <h3 className={`${!authState.preferDark && '!text-black'} w-full`}>{strSignature}</h3>
                   </div>
                 </div>
                 <SignBtn />
