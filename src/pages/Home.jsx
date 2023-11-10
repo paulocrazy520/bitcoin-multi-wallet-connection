@@ -30,6 +30,7 @@ function Home() {
   } = walletContext
   const { messageApi } = useToast();
 
+  const { authState, updateTheme } = useAuthState()
   const [isLoading, setIsLoading] = useState(false)
   const [strSignMessage, setStrSignMessage] = useState("");
   const [strSignature, setStrSignature] = useState("");
@@ -129,11 +130,11 @@ function Home() {
                 {connected && <div className='flex flex-col gap-8'>
                   <div className='flex flex-row items-center gap-8'>
                     <h3>Address:</h3>
-                    <h3 className='!text-black'>{address}</h3>
+                    <h3 className={ !authState.preferDark && '!text-black'}>{address}</h3>
                   </div>
                   <div className='flex flex-row items-center gap-8'>
                     <h3>Balance:</h3>
-                    <h3 className='!text-black'>{balance}</h3>
+                    <h3 className={ !authState.preferDark && '!text-black'}>{balance}</h3>
                   </div>
                 </div>}
                 {!connected ? <ConnectBtn /> : <DisconnectBtn />}
@@ -146,11 +147,11 @@ function Home() {
                 <div className='flex flex-col gap-8'>
                   <div className='flex flex-row items-center gap-8'>
                     <h3>Message:</h3>
-                    <input type="text" className='border text-[30px] py-3' onChange={(e) => setStrSignMessage(e.target.value)} />
+                    <input type="text" className={`${authState.preferDark && '!text-black'} border text-[30px] py-3`} onChange={(e) => setStrSignMessage(e.target.value)} />
                   </div>
                   <div className='flex flex-row items-start w-full max-w-lg gap-8 break-words'>
                     <h3>Signature:</h3>
-                    <h3 className='!text-black w-full'>{strSignature}</h3>
+                    <h3 className={ !authState.preferDark && '!text-black'}>{strSignature}</h3>
                   </div>
                 </div>
                 <SignBtn />
