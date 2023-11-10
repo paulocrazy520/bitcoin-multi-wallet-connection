@@ -149,8 +149,7 @@ function LayoutSimple () {
         <></>
       )}
 
-      <footer className='flex justify-between px-20 py-5 pb-16 lg:px-40 simple-footer'>
-
+      <footer className='flex justify-center px-20 py-5 pb-16 lg:px-40 simple-footer'>
         <p className='text-grey-d1'>
           Copyright &copy; 2023 Wallet Connect By Igor. All rights reserved.
         </p>

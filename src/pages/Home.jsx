@@ -35,7 +35,7 @@ function Home() {
 
   const ConnectBtn = () => (
     <button
-      className='flex items-center mx-auto text-4xl d-btn d-btn-primary active'
+      className='flex items-center gap-8 mx-auto text-4xl d-btn d-btn-primary active'
       onClick={() => {
         setWalletList(!walletList)
       }}
@@ -44,7 +44,6 @@ function Home() {
       Connect Wallet
     </button>
   )
-
 
   const DisconnectBtn = () => (
     <button
@@ -56,6 +55,17 @@ function Home() {
     </button>
   )
 
+  const SignBtn = () => (
+    <button
+      className='flex items-center gap-8 mx-auto text-4xl d-btn d-btn-primary active'
+      onClick={() => {
+
+      }}
+    >
+      <WalletIcon viewBox='0 0 22 22' classes='icon' />
+      Sign Message
+    </button>
+  )
 
   return (
     <>
@@ -97,33 +107,44 @@ function Home() {
       )}
       <section className='home__container'>
         <section className='home__content'>
-          <h1 className='py-12 mb-5 text-center'>Welcome to the Bitcoin Unisat Wallet, Hiro Wallet, Xverse Wallet</h1>
-
+          <h1 className='py-12 mb-5 text-center text-red-500'>Welcome to Mr.BRC and Igor Wallets</h1>
 
           <section className='home__details'>
             <div className='flex flex-col flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>
               <div className='flex flex-col items-center justify-center flex-1 gap-8 token'>
-
-                <div className='flex flex-col gap-8 py-10'>
-                  <div className='flex flex-row gap-8'>
-                    <span><CopyIcon classes={'icon-xs'} /></span>
-                    <h3>{connected && address}</h3>
-
-                  </div>
-                  {connected && <h3 className='mt-10 !text-[#ff0000]'>{`Balance: ${balance}`}</h3>}
+                <div className='w-full py-2 text-center border-b'><h2>Basic Info</h2></div>
+                <div className='flex flex-col gap-8'>
+                  {connected && <h3>{`Address: ${address}`}</h3>}
+                  {connected && <h3>{`Balance: ${balance}`}</h3>}
+                  {connected && <h3>{`Balance: ${balance}`}</h3>}
                 </div>
-
                 {!connected ? <ConnectBtn /> : <DisconnectBtn />}
               </div>
             </div>
+
+            {connected && <div className='flex flex-col flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>
+              <div className='flex flex-col items-center justify-center flex-1 gap-8 token'>
+                <div className='w-full py-2 text-center border-b'><h2>Sign Message</h2></div>
+                <div className='flex flex-col gap-8'>
+                  <div className='flex flex-row items-center gap-8'>
+                    <h3>Message:</h3>
+                    <input type="text" className='border text-[30px] py-3' />
+                  </div>
+                  <h3>{`Signnatrue: ${'empty'}`}</h3>
+                </div>
+                <SignBtn />
+              </div>
+            </div>}
           </section>
         </section>
 
 
-      </section>
-      {modalState.addModalContainer && (
-        <section className='modal__container backdrop__container' id='modal' />
-      )}
+      </section >
+      {
+        modalState.addModalContainer && (
+          <section className='modal__container backdrop__container' id='modal' />
+        )
+      }
     </>
   )
 }
