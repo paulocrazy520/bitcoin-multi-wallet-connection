@@ -19,9 +19,9 @@ export default function useMultiWallet() {
       case 0:
         return disconnectUnisat()
       case 1:
-        return connectHiro()
+        return disconnectHiro()
       case 2:
-        return connectXverse()
+        return disconnectXverse()
       default:
         break
     }

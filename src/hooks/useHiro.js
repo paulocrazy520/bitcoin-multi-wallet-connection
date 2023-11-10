@@ -28,16 +28,17 @@ export default function useHiro() {
   const [unisatInstalled, setUnisatInstalled] = useState(false);
   const { messageApi } = useToast();
 
-  
-  const disconnectWallet = () =>{
+
+  const disconnectWallet = () => {
     setConnected(false);
+    messageApi.notifyWarning('User disconnected Hiro wallet!', 3)
   }
 
 
   const connectWallet = async () => {
     return new Promise((res, rej) => {
       let ret = false;
-   
+
       messageApi.notifyWarning('Connecting Hiro wallet!', 3)
       showConnect({
         userSession,

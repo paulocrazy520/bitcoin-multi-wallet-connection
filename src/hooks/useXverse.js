@@ -38,8 +38,8 @@ export default function useXverse() {
 
   const disconnectWallet = () => {
     setConnected(false);
+    messageApi.notifyWarning('User disconnected Xverse wallet!', 3)
   }
-
 
   const connectWallet = async () => {
     let ret = false

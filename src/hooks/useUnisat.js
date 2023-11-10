@@ -21,6 +21,7 @@ export default function useUnisat(walletIndex) {
 
   const disconnectWallet = () =>{
     setConnected(false);
+    messageApi.notifyWarning('User disconnected Unisat wallet!', 3)
   }
 
   const connectWallet = async () => {
