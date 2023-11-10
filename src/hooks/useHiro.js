@@ -31,8 +31,8 @@ export default function useHiro() {
   const connectWallet = async () => {
     return new Promise((res, rej) => {
       let ret = false;
+   
       messageApi.notifyWarning('Connecting Hiro wallet!', 3)
-      // if (!userSession.isUserSignedIn()) {
       showConnect({
         userSession,
         network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,

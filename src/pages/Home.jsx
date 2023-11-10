@@ -12,7 +12,7 @@ import { useModalState } from '../context/ModalContext'
 import ReactPortal from '../components/ReactPortal'
 
 
-function Home () {
+function Home() {
   const { walletContext } = useAuthState()
   const {
     walletIndex,
@@ -23,10 +23,11 @@ function Home () {
     network,
     sendBitcoin,
     walletList,
-    setWalletList
+    setWalletList,
+    balance
   } = walletContext
 
- 
+
   const [isLoading, setIsLoading] = useState(false)
   const { modalState, openModal, closeModal, addModal, removeModal } =
     useModalState()
@@ -43,7 +44,7 @@ function Home () {
     </button>
   )
 
- 
+
 
   return (
     <>
@@ -52,17 +53,16 @@ function Home () {
           <section className='modal__content'>
             <h2 className='leading-normal'>{`Are you sure to buy ${oxinAmount} oxin with ${calcFee()} BTC?`}</h2>
             <div className='flex flex-wrap justify-center w-full gap-8 mt-16'>
-            
+
               <button
-                className={`d-btn d-btn-block ${
-                  3 == feeRateIndex && 'd-btn-primary'
-                }`}
+                className={`d-btn d-btn-block ${3 == feeRateIndex && 'd-btn-primary'
+                  }`}
                 onClick={() => !isLoading && setFeeRateIndex(3)}
               >
                 <div className='py-2 text-4xl'>Custom</div>
               </button>
             </div>
-           
+
             <div className='btn-group'>
               <button
                 className='d-btn d-btn-primary active'
@@ -97,20 +97,24 @@ function Home () {
                   // target='_blank'
                   rel='noreferrer'
                 >
-                  <div className='flex gap-8'>
-                    <h3>{connected && address}</h3>
-                    <CopyIcon classes={'icon-xs'} />
+                  <div className='flex flex-col gap-8'>
+                    <div className='flex flex-row gap-8'>
+                      <h3>{connected && address}</h3>
+                      <CopyIcon classes={'icon-xs'} />
+                    </div>
+                    {connected && <h3 className='mt-10 text-[#ff0000]'>{`Balance: ${balance}`}</h3>}
                   </div>
+
                 </a>
               </div>
             </div>
-            
-            {!connected  &&  <ConnectBtn />}
-           
+
+            {!connected && <ConnectBtn />}
+
           </section>
         </section>
 
-      
+
       </section>
       {modalState.addModalContainer && (
         <section className='modal__container backdrop__container' id='modal' />
