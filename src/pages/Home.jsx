@@ -121,7 +121,7 @@ function Home() {
       )}
       <section className='home__container'>
         <section className='home__content'>
-          <h1 className='py-12 mb-5 text-center text-red-500'>Welcome to Mr.BRC and Igor Wallets</h1>
+          <h1 className='py-12 mb-5 text-center text-red-500'>Unisat, Leather, Xverse Bitcoin Wallet</h1>
 
           <section className='home__details'>
             <div className='flex flex-col flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>

@@ -151,7 +151,7 @@ function LayoutSimple () {
 
       <footer className='flex justify-center px-20 py-5 pb-16 lg:px-40 simple-footer'>
         <p className='text-grey-d1'>
-          Copyright &copy; 2023 Wallet Connect By Igor. All rights reserved.
+          Copyright &copy; 2023 Bitcoin Wallet Connection All rights reserved.
         </p>
       </footer>
     </>
