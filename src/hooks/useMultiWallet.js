@@ -3,21 +3,27 @@ import useUnisat from './useUnisat'
 import useXverse from './useXverse'
 import useHiro from './useHiro'
 
-import { signMessage } from "sats-connect";
+import { signMessage as satSignMessage } from "sats-connect";
+import { AppConfig, UserSession, signMessage, showConnect } from '@stacks/connect';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
+import { BTCNETWORK } from "../utils/constants";
+
+const appConfig = new AppConfig();
+const userSession = new UserSession({ appConfig });
 
 export default function useMultiWallet() {
   const [connected, setConnected] = useState(false)
   const [walletIndex, setWalletIndex] = useState(0)
   const [address, setAddress] = useState('')
-  const [network, setNetwork] = useState("Mainnet")
+  const [network, setNetwork] = useState()
   const [balance, setBalance] = useState(0)
   const [connectUnisat, disconnectUnisat, unisatAddress, unisatConnected, unisatSend, unisatBalance] = useUnisat(walletIndex)
   const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
-  const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, hiroBalance] = useHiro(walletIndex)
+  const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, session, auth] = useHiro(walletIndex)
 
 
   const sendSignMessage = async (message) => {
-    console.log("*******Sign Message!!", message, address, network)
+    console.log("*******Sign Message!!", message, address)
     switch (walletIndex) {
       case 0:
         if (window.unisat) {
@@ -25,9 +31,25 @@ export default function useMultiWallet() {
           return strSignatrue;
         }
         break;
+      case 1:
+        const signatrue = await signMessage({
+          network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
+          appDetails: {
+            name: 'Wallet Connection Sign',
+            icon: window.location.origin + '/src/assets/icons/ada.png'
+          },
+          stxAddress: auth.profile.stxAddress,
+          message: message,
+          onFinish: (response) => {
+              console.log("********onFinish", response);
+          },
+          onCancel: () => console.log("Canceled!"),
+        });
+
+        return signatrue;
       case 2:
-        const strSignatrue = new Promise((res, rej) => {
-          signMessage({
+        const strSignatrue = await new Promise((res, rej) => {
+          satSignMessage({
             payload: {
               network: {
                 type: network,

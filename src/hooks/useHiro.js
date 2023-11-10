@@ -27,7 +27,8 @@ export default function useHiro() {
   const [network, setNetwork] = useState(null);
   const [unisatInstalled, setUnisatInstalled] = useState(false);
   const { messageApi } = useToast();
-
+  const [session ,setSession] = useState(userSession);
+  const [auth, setAuth] = useState("");
 
   const disconnectWallet = () => {
     setConnected(false);
@@ -47,7 +48,7 @@ export default function useHiro() {
           name: 'Wallet Connection Test',
           icon: window.location.origin + '/src/assets/icons/ada.png'
         },
-        onFinish: () => {
+        onFinish: (response) => {
           messageApi.notifySuccess('Hiro wallet connect success.')
           // console.log('userSession.loadUserData().profile.btcAddress :>> ', userSession.loadUserData());
           resolve(userSession.loadUserData().profile.btcAddress.p2wpkh.mainnet,
@@ -56,6 +57,9 @@ export default function useHiro() {
           const testAddress = userSession.loadUserData().profile.btcAddress.p2wpkh.testnet;
           setAddress(BTCNETWORK == 0 ? testAddress : mainAddress)
           setConnected(true);
+          setSession(response.userSession);
+          setAuth(response.authResponsePayload);
+
           res(true);
         },
         onCancel: () => {
@@ -81,6 +85,6 @@ export default function useHiro() {
     }
     return txid;
   }
-  return [connectWallet, disconnectWallet, address, connected, hiroSend]//, unisatSend, balance]
+  return [connectWallet, disconnectWallet, address, connected, hiroSend, session, auth]//, unisatSend, balance]
 
 }
