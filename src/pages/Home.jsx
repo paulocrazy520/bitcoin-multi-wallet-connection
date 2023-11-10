@@ -113,11 +113,16 @@ function Home() {
             <div className='flex flex-col flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>
               <div className='flex flex-col items-center justify-center flex-1 gap-8 token'>
                 <div className='w-full py-2 text-center border-b'><h2>Basic Info</h2></div>
-                <div className='flex flex-col gap-8'>
-                  {connected && <h3>{`Address: ${address}`}</h3>}
-                  {connected && <h3>{`Balance: ${balance}`}</h3>}
-                  {connected && <h3>{`Balance: ${balance}`}</h3>}
-                </div>
+                {connected && <div className='flex flex-col gap-8'>
+                  <div className='flex flex-row items-center gap-8'>
+                    <h3>Address:</h3>
+                    <h3 className='!text-black'>{address}</h3>
+                  </div>
+                  <div className='flex flex-row items-center gap-8'>
+                    <h3>Balance:</h3>
+                    <h3 className='!text-black'>{balance}</h3>
+                  </div>
+                </div>}
                 {!connected ? <ConnectBtn /> : <DisconnectBtn />}
               </div>
             </div>
@@ -130,7 +135,10 @@ function Home() {
                     <h3>Message:</h3>
                     <input type="text" className='border text-[30px] py-3' />
                   </div>
-                  <h3>{`Signnatrue: ${'empty'}`}</h3>
+                  <div className='flex flex-row items-center gap-8'>
+                    <h3>Signature:</h3>
+                    <h3 className='!text-black'>{}</h3>
+                  </div>
                 </div>
                 <SignBtn />
               </div>
