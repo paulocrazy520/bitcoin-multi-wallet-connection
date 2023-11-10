@@ -26,7 +26,7 @@ function Home() {
     setWalletList,
     balance,
     disconnectWallet,
-    signMessage
+    sendSignMessage
   } = walletContext
   const { messageApi } = useToast();
 
@@ -39,7 +39,7 @@ function Home() {
 
   const handleSignMessage = async () => {
     try {
-      const signature = await signMessage(strSignMessage);
+      const signature = await sendSignMessage(strSignMessage);
       setStrSignature(signature)
       if (signature)
         messageApi.notifyWarning(signature, 3)

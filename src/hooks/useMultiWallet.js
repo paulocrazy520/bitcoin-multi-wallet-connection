@@ -3,25 +3,46 @@ import useUnisat from './useUnisat'
 import useXverse from './useXverse'
 import useHiro from './useHiro'
 
+import { signMessage } from "sats-connect";
+
 export default function useMultiWallet() {
   const [connected, setConnected] = useState(false)
   const [walletIndex, setWalletIndex] = useState(0)
   const [address, setAddress] = useState('')
-  const [network, setNetwork] = useState('')
+  const [network, setNetwork] = useState("Mainnet")
   const [balance, setBalance] = useState(0)
   const [connectUnisat, disconnectUnisat, unisatAddress, unisatConnected, unisatSend, unisatBalance] = useUnisat(walletIndex)
   const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
   const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, hiroBalance] = useHiro(walletIndex)
 
-  const signMessage = async (msg) => {
-    console.log("*******Sign Message!!", msg)
+
+  const sendSignMessage = async (message) => {
+    console.log("*******Sign Message!!", message, address, network)
     switch (walletIndex) {
       case 0:
         if (window.unisat) {
-          const strSignatrue = await unisat.signMessage(msg);
+          const strSignatrue = await unisat.signMessage(message);
           return strSignatrue;
         }
         break;
+      case 2:
+        const strSignatrue = new Promise((res, rej) => {
+          signMessage({
+            payload: {
+              network: {
+                type: network,
+              },
+              address,
+              message,
+            },
+            onFinish: (response) => {
+              res(response);
+            },
+            onCancel: () => console.log("Canceled!"),
+          });
+        });
+
+        return strSignatrue;
     }
   }
 
@@ -98,5 +119,5 @@ export default function useMultiWallet() {
     }
   }, [walletIndex, unisatBalance])
 
-  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet, signMessage]
+  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet, sendSignMessage]
 }
