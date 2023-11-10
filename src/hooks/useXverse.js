@@ -12,17 +12,17 @@ const netArray = ['Testnet', 'Mainnet']
 const bitcoinTestnet =
   BTCNETWORK == 0
     ? {
-        bech32: 'tb',
-        pubKeyHash: 0x6f,
-        scriptHash: 0xc4,
-        wif: 0xef,
-      }
+      bech32: 'tb',
+      pubKeyHash: 0x6f,
+      scriptHash: 0xc4,
+      wif: 0xef,
+    }
     : {
-        bech32: 'bc',
-        pubKeyHash: 0x00,
-        scriptHash: 0x05,
-        wif: 0x80,
-      }
+      bech32: 'bc',
+      pubKeyHash: 0x00,
+      scriptHash: 0x05,
+      wif: 0x80,
+    }
 
 const BTC_NETWORK = BTCNETWORK == 0 ? 'Testnet' : 'Mainnet'
 
@@ -34,6 +34,12 @@ export default function useXverse() {
   const [ordinalsAccount, setOrdinalsAccount] = useState(null)
   const [address, setAddress] = useState('')
   const { messageApi } = useToast()
+
+
+  const disconnectWallet = () => {
+    setConnected(false);
+  }
+
 
   const connectWallet = async () => {
     let ret = false
@@ -96,7 +102,7 @@ export default function useXverse() {
       onFinish: response => {
         txid = response.txId
       },
-      onCancel: () => {},
+      onCancel: () => { },
     }
 
     await signTransaction(signPsbtOptions)
@@ -202,5 +208,5 @@ export default function useXverse() {
     }
   }
 
-  return [connectWallet, address, connected, xverseSend]
+  return [connectWallet, disconnectWallet, address, connected, xverseSend]
 }

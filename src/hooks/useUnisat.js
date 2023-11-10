@@ -19,6 +19,10 @@ export default function useUnisat(walletIndex) {
   const [unisatInstalled, setUnisatInstalled] = useState(false);
   const { messageApi } = useToast();
 
+  const disconnectWallet = () =>{
+    setConnected(false);
+  }
+
   const connectWallet = async () => {
     if (!window.unisat) {
       messageApi.notifyWarning('Please install Unisat wallet!', 3)
@@ -146,6 +150,6 @@ export default function useUnisat(walletIndex) {
     }
     return txid
   }
-  return [connectWallet, address, connected, unisatSend, balance]
+  return [connectWallet, disconnectWallet, address, connected, unisatSend, balance]
 
 }

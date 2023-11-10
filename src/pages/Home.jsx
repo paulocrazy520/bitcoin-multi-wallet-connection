@@ -24,7 +24,8 @@ function Home() {
     sendBitcoin,
     walletList,
     setWalletList,
-    balance
+    balance,
+    disconnectWallet
   } = walletContext
 
 
@@ -34,7 +35,7 @@ function Home() {
 
   const ConnectBtn = () => (
     <button
-      className='flex items-center gap-8 mx-auto text-4xl d-btn d-btn-primary active'
+      className='flex items-center mx-auto text-4xl d-btn d-btn-primary active'
       onClick={() => {
         setWalletList(!walletList)
       }}
@@ -44,6 +45,16 @@ function Home() {
     </button>
   )
 
+
+  const DisconnectBtn = () => (
+    <button
+      className='flex items-center gap-8 mx-auto text-4xl d-btn d-btn-primary active'
+      onClick={disconnectWallet}
+    >
+      <WalletIcon viewBox='0 0 22 22' classes='icon' />
+      Disconnect Wallet
+    </button>
+  )
 
 
   return (
@@ -90,27 +101,21 @@ function Home() {
 
 
           <section className='home__details'>
-            <div className='flex flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>
-              <div className='flex items-center justify-center flex-1 gap-8 token'>
-                <a
-                  // href='https://unisat.io/brc20/OXIN'
-                  // target='_blank'
-                  rel='noreferrer'
-                >
-                  <div className='flex flex-col gap-8'>
-                    <div className='flex flex-row gap-8'>
-                      <h3>{connected && address}</h3>
-                      <CopyIcon classes={'icon-xs'} />
-                    </div>
-                    {connected && <h3 className='mt-10 text-[#ff0000]'>{`Balance: ${balance}`}</h3>}
-                  </div>
+            <div className='flex flex-col flex-wrap justify-center gap-12 mb-12 info lg:justify-between'>
+              <div className='flex flex-col items-center justify-center flex-1 gap-8 token'>
 
-                </a>
+                <div className='flex flex-col gap-8 py-10'>
+                  <div className='flex flex-row gap-8'>
+                    <span><CopyIcon classes={'icon-xs'} /></span>
+                    <h3>{connected && address}</h3>
+
+                  </div>
+                  {connected && <h3 className='mt-10 !text-[#ff0000]'>{`Balance: ${balance}`}</h3>}
+                </div>
+
+                {!connected ? <ConnectBtn /> : <DisconnectBtn />}
               </div>
             </div>
-
-            {!connected && <ConnectBtn />}
-
           </section>
         </section>
 

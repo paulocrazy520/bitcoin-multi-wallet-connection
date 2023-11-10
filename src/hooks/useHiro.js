@@ -28,6 +28,12 @@ export default function useHiro() {
   const [unisatInstalled, setUnisatInstalled] = useState(false);
   const { messageApi } = useToast();
 
+  
+  const disconnectWallet = () =>{
+    setConnected(false);
+  }
+
+
   const connectWallet = async () => {
     return new Promise((res, rej) => {
       let ret = false;
@@ -74,6 +80,6 @@ export default function useHiro() {
     }
     return txid;
   }
-  return [connectWallet, address, connected, hiroSend]//, unisatSend, balance]
+  return [connectWallet, disconnectWallet, address, connected, hiroSend]//, unisatSend, balance]
 
 }

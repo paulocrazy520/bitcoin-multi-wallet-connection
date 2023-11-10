@@ -9,9 +9,23 @@ export default function useMultiWallet() {
   const [address, setAddress] = useState('')
   const [network, setNetwork] = useState('')
   const [balance, setBalance] = useState(0)
-  const [connectUnisat, unisatAddress, unisatConnected, unisatSend, unisatBalance] = useUnisat(walletIndex)
-  const [connectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
-  const [connectHiro, hiroAddress, hiroConnected, hiroSend, hiroBalance] = useHiro(walletIndex)
+  const [connectUnisat, disconnectUnisat, unisatAddress, unisatConnected, unisatSend, unisatBalance] = useUnisat(walletIndex)
+  const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
+  const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, hiroBalance] = useHiro(walletIndex)
+
+  const disconnectWallet = () => {
+    console.log("*******disconnectWallet!!")
+    switch (walletIndex) {
+      case 0:
+        return disconnectUnisat()
+      case 1:
+        return connectHiro()
+      case 2:
+        return connectXverse()
+      default:
+        break
+    }
+  }
 
   const connectWallet = async index => {
     switch (index) {
@@ -73,5 +87,5 @@ export default function useMultiWallet() {
     }
   }, [walletIndex, unisatBalance])
 
-  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance]
+  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet]
 }
