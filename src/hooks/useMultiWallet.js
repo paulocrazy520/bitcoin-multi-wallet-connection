@@ -13,8 +13,19 @@ export default function useMultiWallet() {
   const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
   const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, hiroBalance] = useHiro(walletIndex)
 
+  const signMessage = async (msg) => {
+    console.log("*******Sign Message!!", msg)
+    switch (walletIndex) {
+      case 0:
+        if (window.unisat) {
+          const strSignatrue = await unisat.signMessage(msg);
+          return strSignatrue;
+        }
+        break;
+    }
+  }
+
   const disconnectWallet = () => {
-    console.log("*******disconnectWallet!!")
     switch (walletIndex) {
       case 0:
         return disconnectUnisat()
@@ -87,5 +98,5 @@ export default function useMultiWallet() {
     }
   }, [walletIndex, unisatBalance])
 
-  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet]
+  return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet, signMessage]
 }

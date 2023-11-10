@@ -25,13 +25,28 @@ function Home() {
     walletList,
     setWalletList,
     balance,
-    disconnectWallet
+    disconnectWallet,
+    signMessage
   } = walletContext
-
+  const { messageApi } = useToast();
 
   const [isLoading, setIsLoading] = useState(false)
+  const [strSignMessage, setStrSignMessage] = useState("");
+  const [strSignature, setStrSignature] = useState("");
   const { modalState, openModal, closeModal, addModal, removeModal } =
     useModalState()
+
+  const handleSignMessage = async () => {
+    try {
+      const signature = await signMessage(strSignMessage);
+      setStrSignature(signature)
+      if (signature)
+        messageApi.notifyWarning(signature, 3)
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
 
   const ConnectBtn = () => (
     <button
@@ -58,9 +73,7 @@ function Home() {
   const SignBtn = () => (
     <button
       className='flex items-center gap-8 mx-auto text-4xl d-btn d-btn-primary active'
-      onClick={() => {
-
-      }}
+      onClick={() => handleSignMessage()}
     >
       <WalletIcon viewBox='0 0 22 22' classes='icon' />
       Sign Message
@@ -133,11 +146,11 @@ function Home() {
                 <div className='flex flex-col gap-8'>
                   <div className='flex flex-row items-center gap-8'>
                     <h3>Message:</h3>
-                    <input type="text" className='border text-[30px] py-3' />
+                    <input type="text" className='border text-[30px] py-3' onChange={(e) => setStrSignMessage(e.target.value)} />
                   </div>
-                  <div className='flex flex-row items-center gap-8'>
+                  <div className='flex flex-row items-start w-full max-w-lg gap-8 break-words'>
                     <h3>Signature:</h3>
-                    <h3 className='!text-black'>{}</h3>
+                    <h3 className='!text-black w-full'>{strSignature}</h3>
                   </div>
                 </div>
                 <SignBtn />
