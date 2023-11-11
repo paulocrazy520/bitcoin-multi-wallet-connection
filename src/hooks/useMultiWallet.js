@@ -131,7 +131,7 @@ export default function useMultiWallet() {
   useEffect(() => {
     switch (walletIndex) {
       case 0:
-        unisatBalance && setBalance(unisatBalance.confirmed)
+        //unisatBalance && setBalance(unisatBalance.confirmed)
         break
       case 1:
         break

@@ -150,7 +150,6 @@ function Home() {
           </section>
         </section>
 
-
       </section >
       {
         modalState.addModalContainer && (
