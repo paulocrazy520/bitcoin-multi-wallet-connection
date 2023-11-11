@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import useToast from "./useToast";
 import { AppConfig, UserSession, showConnect } from '@stacks/connect';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
@@ -7,25 +7,10 @@ import { BTCNETWORK } from "../utils/constants";
 const appConfig = new AppConfig();
 const userSession = new UserSession({ appConfig });
 
-var resolve = function (cardinalAddress, ordinalAddress) {
-  // use addresses
-};
-
-let currentNetwork = ''
-
 export default function useHiro() {
 
   const [connected, setConnected] = useState(false);
-  const [accounts, setAccounts] = useState([]);
-  const [publicKey, setPublicKey] = useState("");
   const [address, setAddress] = useState("");
-  const [balance, setBalance] = useState({
-    confirmed: 0,
-    unconfirmed: 0,
-    total: 0,
-  });
-  const [network, setNetwork] = useState(null);
-  const [unisatInstalled, setUnisatInstalled] = useState(false);
   const { messageApi } = useToast();
   const [session ,setSession] = useState(userSession);
   const [auth, setAuth] = useState("");
@@ -34,8 +19,6 @@ export default function useHiro() {
     setConnected(false);
     messageApi.notifyWarning('User disconnected Hiro wallet!', 3)
   }
-
-
   const connectWallet = async () => {
     return new Promise((res, rej) => {
       let ret = false;
@@ -45,14 +28,11 @@ export default function useHiro() {
         userSession,
         network: BTCNETWORK == 0 ? StacksTestnet : StacksMainnet,
         appDetails: {
-          name: 'Wallet Connection Test',
+          name: 'Hiro Wallet Connection Test',
           icon: window.location.origin + '/src/assets/icons/ada.png'
         },
         onFinish: (response) => {
-          messageApi.notifySuccess('Hiro wallet connect success.')
-          // console.log('userSession.loadUserData().profile.btcAddress :>> ', userSession.loadUserData());
-          resolve(userSession.loadUserData().profile.btcAddress.p2wpkh.mainnet,
-            userSession.loadUserData().profile.btcAddress.p2tr.mainnet);
+          messageApi.notifySuccess('Hiro wallet connection success.')
           const mainAddress = userSession.loadUserData().profile.btcAddress.p2wpkh.mainnet;
           const testAddress = userSession.loadUserData().profile.btcAddress.p2wpkh.testnet;
           setAddress(BTCNETWORK == 0 ? testAddress : mainAddress)

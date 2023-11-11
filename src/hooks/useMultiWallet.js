@@ -4,12 +4,11 @@ import useXverse from './useXverse'
 import useHiro from './useHiro'
 
 import { signMessage as satSignMessage } from "sats-connect";
-import { AppConfig, UserSession, signMessage, showConnect, openSignatureRequestPopup } from '@stacks/connect';
+import { AppConfig, openSignatureRequestPopup } from '@stacks/connect';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
 import { BTCNETWORK } from "../utils/constants";
 
 const appConfig = new AppConfig();
-const userSession = new UserSession({ appConfig });
 
 export default function useMultiWallet() {
   const [connected, setConnected] = useState(false)

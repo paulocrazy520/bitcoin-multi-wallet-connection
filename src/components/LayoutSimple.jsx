@@ -9,9 +9,6 @@ import lightIcon from '../assets/icons/light-icon.png'
 import darkIcon from '../assets/icons/dark-icon.png'
 import CancelIcon from '../assets/icons/CancelIcon'
 import WalletIcon from '../assets/icons/WalletIcon'
-import twitterIcon from '../assets/icons/twitter.svg'
-import mediumIcon from '../assets/icons/Medium.svg'
-import telegramIcon from '../assets/icons/telegram.svg'
 import okxWalletIcon from '../assets/icons/okxWalletIcon.png'
 import metamaskWalletIcon from '../assets/icons/metamaskWalletIcon.png'
 import unisatWalletIcon from '../assets/icons/unisatWalletIcon.png'
@@ -151,7 +148,7 @@ function LayoutSimple () {
 
       <footer className='flex justify-center px-20 py-5 pb-16 lg:px-40 simple-footer'>
         <p className='text-grey-d1'>
-          Copyright &copy; 2023 Bitcoin Wallet Connection All rights reserved.
+          Copyright &copy; 2023 Bitcoin Multi Wallet Connection All rights reserved.
         </p>
       </footer>
     </>

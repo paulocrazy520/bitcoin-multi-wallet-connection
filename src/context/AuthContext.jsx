@@ -99,7 +99,6 @@ export function AuthStateProvider({ children }) {
                 authState, authDispatch, updateToken, updateTheme, updateUser, deleteUser
             }
             }
-
         >
             {children}
         </AuthContext.Provider>

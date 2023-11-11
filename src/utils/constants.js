@@ -1,32 +1,6 @@
 export const APP_MODE = true //false- test mode
 export const BTCNETWORK = 1 //0- testnet 1-mainnet
 
-
-export const ORDER_TYPE_CREATE_POOL = 1
-export const ORDER_TYPE_ADD_LIQUIDITY = 2
-export const ORDER_TYPE_REMOVE_LIQUIDITY = 3
-export const ORDER_TYPE_SWAP = 4
-
-export const ORDER_STATUS_LISTED = 1
-export const ORDER_STATUS_PROCESSING = 2
-export const ORDER_STATUS_FINALIZING = 3
-export const ORDER_STATUS_FAILED = 4
-export const ORDER_STATUS_CONFIRMED = 5
-export const formatOrderStatus = (status, type = 1) => {
-  switch (status) {
-    case 1:
-      return 'Order listed'
-    case 2:
-      return 'Order accepted'
-    case 98:
-      return 'Failed'
-    case 99:
-      return 'Confirmed'
-    default:
-      return 'Pending'
-  }
-}
-
 export const formatTime = timestamp => {
   const date = new Date(timestamp)
   const year = date.getFullYear()

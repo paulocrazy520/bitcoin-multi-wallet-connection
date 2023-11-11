@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import CopyIcon from '../assets/icons/CopyIcon'
 import { useAuthState } from '../context/AuthContext'
 import WalletIcon from '../assets/icons/WalletIcon'
-import { validate, getAddressInfo } from 'bitcoin-address-validation'
 import useToast from '../hooks/useToast'
-import {
-  BTCNETWORK,
-} from '../utils/constants'
 import { useModalState } from '../context/ModalContext'
 import ReactPortal from '../components/ReactPortal'
 
@@ -15,13 +10,8 @@ import ReactPortal from '../components/ReactPortal'
 function Home() {
   const { walletContext } = useAuthState()
   const {
-    walletIndex,
-    setWalletIndex,
-    connectWallet,
     address,
     connected,
-    network,
-    sendBitcoin,
     walletList,
     setWalletList,
     balance,

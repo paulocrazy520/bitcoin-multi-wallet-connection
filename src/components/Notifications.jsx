@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { toast } from "react-toastify";
-
 import CheckIcon from "../assets/icons/CheckIcon";
 import CloseIcon from "../assets/icons/CloseIcon";
 import CancelIcon from "../assets/icons/CancelIcon";
