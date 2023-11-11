@@ -27,8 +27,9 @@ export const sleep = timeout => {
 }
 
 export function formatBTCNumber(num) {
+  
   // Round the number to 8 decimal places
-  let roundedNum = num.toFixed(8)
+  let roundedNum = (num / (10 ** 8)).toFixed(8)
 
   // Convert the rounded number to a string
   let numString = roundedNum.replace(/\.?0+$/, '')

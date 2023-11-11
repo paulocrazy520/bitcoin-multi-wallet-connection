@@ -17,7 +17,7 @@ export default function useMultiWallet() {
   const [network, setNetwork] = useState()
   const [balance, setBalance] = useState(0)
   const [connectUnisat, disconnectUnisat, unisatAddress, unisatConnected, unisatSend, unisatBalance] = useUnisat(walletIndex)
-  const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend] = useXverse()
+  const [connectXverse, disconnectXverse, xverseAddress, xverseConnected, xverseSend,] = useXverse()
   const [connectHiro, disconnectHiro, hiroAddress, hiroConnected, hiroSend, session, auth] = useHiro(walletIndex)
 
 
@@ -131,9 +131,12 @@ export default function useMultiWallet() {
   useEffect(() => {
     switch (walletIndex) {
       case 0:
-        //unisatBalance && setBalance(unisatBalance.confirmed)
+        console.log("************unisatBalance", unisatBalance);
+        unisatBalance && setBalance(unisatBalance.confirmed)
         break
       case 1:
+        break
+      case 2:
         break
 
       default:

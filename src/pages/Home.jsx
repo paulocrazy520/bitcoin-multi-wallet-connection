@@ -5,7 +5,7 @@ import WalletIcon from '../assets/icons/WalletIcon'
 import useToast from '../hooks/useToast'
 import { useModalState } from '../context/ModalContext'
 import ReactPortal from '../components/ReactPortal'
-
+import {formatBTCNumber} from '../utils/constants'
 
 function Home() {
   const { walletContext } = useAuthState()
@@ -124,7 +124,7 @@ function Home() {
                   </div>
                   <div className='flex flex-row items-center gap-8'>
                     <h3>Balance:</h3>
-                    <h3 className={ !authState.preferDark && '!text-black'}>{balance}</h3>
+                    <h3 className={ !authState.preferDark && '!text-black'}>{formatBTCNumber(balance)}</h3>
                   </div>
                 </div>}
                 {!connected ? <ConnectBtn /> : <DisconnectBtn />}

@@ -80,6 +80,7 @@ export default function useUnisat(walletIndex) {
     setPublicKey(publicKey);
 
     const balance = await unisat.getBalance();
+    console.log('balance=========>', balance);
     setBalance(balance);
 
     const network = await unisat.getNetwork();
