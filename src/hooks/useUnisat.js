@@ -73,14 +73,12 @@ export default function useUnisat(walletIndex) {
   const getBasicInfo = async () => {
     const unisat = (window).unisat;
     const [address] = await unisat.getAccounts();
-    console.log('address=========>', address);
     setAddress(address);
 
     const publicKey = await unisat.getPublicKey();
     setPublicKey(publicKey);
 
     const balance = await unisat.getBalance();
-    console.log('balance=========>', balance);
     setBalance(balance);
 
     const network = await unisat.getNetwork();

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useUnisat from './useUnisat'
 import useXverse from './useXverse'
 import useHiro from './useHiro'
-
+import axios from 'axios'
 import { signMessage as satSignMessage } from "sats-connect";
 import { AppConfig, openSignatureRequestPopup } from '@stacks/connect';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
@@ -108,41 +108,42 @@ export default function useMultiWallet() {
     }
   }
 
-  useEffect(() => {
+
+  const getBalance = async (address) => {
+    if (!address)
+      return;
+
+    try {
+      const response = await axios.get(`https://mempool.space/api/address/${address}`)
+      return response?.data?.chain_stats.funded_txo_sum
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  useEffect(async () => {
     switch (walletIndex) {
       case 0:
         setAddress(unisatAddress)
         setConnected(unisatConnected)
+        setBalance(await getBalance(unisatAddress));
         break
       case 1:
         setAddress(hiroAddress)
         setConnected(hiroConnected)
+        setBalance(await getBalance(hiroAddress));
         break
       case 2:
         setAddress(xverseAddress)
         setConnected(xverseConnected)
+        setBalance(await getBalance(xverseAddress));
         break
-
       default:
         break
     }
   }, [walletIndex, unisatAddress, unisatConnected, hiroAddress, hiroConnected, xverseAddress, xverseConnected])
-
-  useEffect(() => {
-    switch (walletIndex) {
-      case 0:
-        console.log("************unisatBalance", unisatBalance);
-        unisatBalance && setBalance(unisatBalance.confirmed)
-        break
-      case 1:
-        break
-      case 2:
-        break
-
-      default:
-        break
-    }
-  }, [walletIndex, unisatBalance])
 
   return [walletIndex, setWalletIndex, connectWallet, address, connected, network, sendBitcoin, balance, disconnectWallet, sendSignMessage]
 }

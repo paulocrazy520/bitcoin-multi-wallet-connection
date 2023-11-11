@@ -49,6 +49,7 @@ export default function useXverse() {
         },
       },
       onFinish: response => {
+        console.log("*********XVerse Return", response);
         const add = response.addresses[0].address
         messageApi.notifySuccess('Xverse Wallet connect success!')
         setAddress(add)
